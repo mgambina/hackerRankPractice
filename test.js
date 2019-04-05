@@ -345,13 +345,13 @@
 
 // console.log(maximumToys([1, 12, 5, 111, 200, 1000, 10], 50));
 
-//(13)  - 02 de abril de 2019
+//(13)  - 02 de abril de 2019 - empezado y dejado
 
 function makeAnagram(a, b) {
     var aDic = {};
     var bDic = {};
     var countDel = 0;
-  
+
     for (var i = 0; i < a.length; i++) {
         if (aDic.hasOwnProperty(a[i])) {
             aDic[a[i]] += 1;
@@ -360,8 +360,8 @@ function makeAnagram(a, b) {
         }
     }
 
-    var aKey = Object.keys(aDic);
-    var aKeyVal = aDic[aKey];
+    var aDicKeys = Object.keys(aDic);
+
 
     for (var j = 0; j < b.length; j++) {
         if (bDic.hasOwnProperty(b[j])) {
@@ -371,38 +371,120 @@ function makeAnagram(a, b) {
         }
     }
 
+    var bDicKeys = Object.keys(bDic);
 
-    var bKey = Object.keys(bDic);
-    var bKeyVal = bDic[aKey];
+    for (var m = 0; m < aDicKeys.length; m++) {
+        var aKey = aDicKeys[m];
+        var aKeyValue = aDic[aKey];
 
-    for (var k = 0; k < aKey.length; k++) {
-    
-        if (bKey.includes(aKey[k])) {
+        if (bDic.hasOwnProperty(aKey)) {
 
-            if(bDic.hasOwnProperty(aDic[k])) {
-               if (bDic[aDic[k]] === aDic[aDic[k]]) {
+            var bKey = aKey;
+            var bKeyValue = bDic[bKey]
 
-               } else {
-                   countDel += bDic[aDic[k]];
-               }
+
+            //si existe y tienen el mismo valor
+            if (aKeyValue === bKeyValue) {
+
+            } else {
+                //si existe pero no tienen el mismo valor
+                if (aKeyValue < bKeyValue) {
+
+                } else {
+                    countDel += console.log("hola,", Math.abs(aKeyValue - bKeyValue));
+                    aKeyValue = bKeyValue;
+                }
+               
             }
-    
+
+        } else {
+            //si no existe
+            delete aDic[aKey];
+            countDel += aKeyValue;
+            
         }
+
     }
 
-    // for (var m = 0; k < bKey.length; m++) {
+    console.log(aDic);
 
-    //     if (aKey.includes(bKey[m])) {
-    //         if (aKey[m] === bKey[m]) {
+    // for (var p = 0; p < bDicKeys.length; p++) {
+    //     var bKey = bDicKeys[p];
+    //     var bKeyValue = bDic[bKey];
+
+    //     if (aDic.hasOwnProperty(bKey)) {
+
+    //         var aKey = bKey;
+    //         var aKeyValue = aDic[aKey]
+
+    //         if (aKeyValue === bKeyValue) {
+
     //         } else {
-    //             countDel += bKey[m];
-
+    //             countDel += Math.abs(aKeyValue - bKeyValue);
+    //             console.log("3",countDel);
     //         }
+
+    //     } else {
+    //         delete bDic[bKey];
+    //         countDel += bKeyValue;
+    //         console.log("4",countDel);
     //     }
+
     // }
-       return countDel;
+
+    return countDel;
 
 }
 
-console.log(makeAnagram("cde", "abc"));
-//console.log(makeAnagram("fcrxzwscanmligyxyvym", "jxwtrhvujlmrpdoqbisbwhmgpmeoke"));
+//console.log(makeAnagram("cde", "abc"));
+console.log(makeAnagram("fcrxzwscanmligyxyvym", "jxwtrhvujlmrpdoqbisbwhmgpmeoke"));
+//console.log(makeAnagram("famor", "amorrr"));
+
+
+// function makeAnagram(a, b) {
+//     var abDic = {};
+//     var countDel = 0;
+
+//     for (var i = 0; i < a.length; i++) {
+//         if (abDic.hasOwnProperty(a[i])) {
+//             abDic[a[i]] += 1;
+//         } else {
+//             abDic[a[i]] = 1;
+//         }
+//     }
+
+//     for (var j = 0; j < b.length; j++) {
+//         if (abDic.hasOwnProperty(b[j])) {
+//             abDic[b[j]] += 1;
+//         } else {
+//             abDic[b[j]] = 1;
+//         }
+//     }
+
+//     var abDicKeys = Object.keys(abDic);
+
+//     console.log(abDic);
+
+//     for (var m = 0; m < abDicKeys.length; m++) {
+
+//         var key = abDicKeys[m];
+//         var keyValue = abDic[key];
+
+//         if (keyValue % 2 != 0) {
+//             console.log("antes de modificar: ",key,keyValue);
+//             keyValue -= 1;
+//             console.log("despues: ",key,keyValue);
+//             //countDel += 1;
+
+//         }
+
+//     }
+
+//     return countDel;
+
+// }
+
+// //console.log(makeAnagram("cde", "abc"));
+// console.log(makeAnagram("aaaa", "abc"));
+// //console.log(makeAnagram("fcrxzwscanmligyxyvym", "jxwtrhvujlmrpdoqbisbwhmgpmeoke"));
+
