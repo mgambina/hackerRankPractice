@@ -345,136 +345,93 @@
 
 // console.log(maximumToys([1, 12, 5, 111, 200, 1000, 10], 50));
 
-//(13)  - 02 de abril de 2019 - empezado y dejado
-
-function makeAnagram(a, b) {
-    var aDic = {};
-    var bDic = {};
-    var countDel = 0;
-
-    for (var i = 0; i < a.length; i++) {
-        if (aDic.hasOwnProperty(a[i])) {
-            aDic[a[i]] += 1;
-        } else {
-            aDic[a[i]] = 1;
-        }
-    }
-
-    var aDicKeys = Object.keys(aDic);
-
-
-    for (var j = 0; j < b.length; j++) {
-        if (bDic.hasOwnProperty(b[j])) {
-            bDic[b[j]] += 1;
-        } else {
-            bDic[b[j]] = 1;
-        }
-    }
-
-    var bDicKeys = Object.keys(bDic);
-
-    for (var m = 0; m < aDicKeys.length; m++) {
-        var aKey = aDicKeys[m];
-        var aKeyValue = aDic[aKey];
-
-        if (bDic.hasOwnProperty(aKey)) {
-
-            var bKey = aKey;
-            var bKeyValue = bDic[bKey]
-
-
-            //si existe y tienen el mismo valor
-            if (aKeyValue === bKeyValue) {
-
-            } else {
-                //si existe pero no tienen el mismo valor
-                if (aKeyValue < bKeyValue) {
-
-                } else {
-                    countDel += console.log("hola,", Math.abs(aKeyValue - bKeyValue));
-                    aKeyValue = bKeyValue;
-                }
-               
-            }
-
-        } else {
-            //si no existe
-            delete aDic[aKey];
-            countDel += aKeyValue;
-            
-        }
-
-    }
-
-    console.log(aDic);
-
-    // for (var p = 0; p < bDicKeys.length; p++) {
-    //     var bKey = bDicKeys[p];
-    //     var bKeyValue = bDic[bKey];
-
-    //     if (aDic.hasOwnProperty(bKey)) {
-
-    //         var aKey = bKey;
-    //         var aKeyValue = aDic[aKey]
-
-    //         if (aKeyValue === bKeyValue) {
-
-    //         } else {
-    //             countDel += Math.abs(aKeyValue - bKeyValue);
-    //             console.log("3",countDel);
-    //         }
-
-    //     } else {
-    //         delete bDic[bKey];
-    //         countDel += bKeyValue;
-    //         console.log("4",countDel);
-    //     }
-
-    // }
-
-    return countDel;
-
-}
-
-//console.log(makeAnagram("cde", "abc"));
-console.log(makeAnagram("fcrxzwscanmligyxyvym", "jxwtrhvujlmrpdoqbisbwhmgpmeoke"));
-//console.log(makeAnagram("famor", "amorrr"));
-
+//(13)  - 02 de abril de 2019 
 
 // function makeAnagram(a, b) {
-//     var abDic = {};
+//     var aDic = {};
+//     var bDic = {};
 //     var countDel = 0;
 
 //     for (var i = 0; i < a.length; i++) {
-//         if (abDic.hasOwnProperty(a[i])) {
-//             abDic[a[i]] += 1;
+//         if (aDic.hasOwnProperty(a[i])) {
+//             aDic[a[i]] += 1;
 //         } else {
-//             abDic[a[i]] = 1;
+//             aDic[a[i]] = 1;
 //         }
 //     }
+
+//     var aDicKeys = Object.keys(aDic);
 
 //     for (var j = 0; j < b.length; j++) {
-//         if (abDic.hasOwnProperty(b[j])) {
-//             abDic[b[j]] += 1;
+//         if (bDic.hasOwnProperty(b[j])) {
+//             bDic[b[j]] += 1;
 //         } else {
-//             abDic[b[j]] = 1;
+//             bDic[b[j]] = 1;
 //         }
 //     }
 
-//     var abDicKeys = Object.keys(abDic);
+//     var bDicKeys = Object.keys(bDic);
 
-//     console.log(abDic);
+//     for (var m = 0; m < aDicKeys.length; m++) {
+//         for (var t = 0; t < bDicKeys.length; t++) {
 
-//     for (var m = 0; m < abDicKeys.length; m++) {
 
-//         var key = abDicKeys[m];
-//         var keyValue = abDic[key];
+//         }    }
 
-//         if (keyValue % 2 != 0) {
-//             console.log("antes de modificar: ",key,keyValue);
-//             keyValue -= 1;
-//             console.log("despues: ",key,keyValue);
-//             //countDel += 1;
+//     for (var m = 0; m < aDicKeys.length; m++) {
+//         var aKey = aDicKeys[m];
+//         var aKeyValue = aDic[aKey];
+
+//         if (bDic.hasOwnProperty(aKey)) {
+
+//             var bKey = aKey;
+//             var bKeyValue = bDic[bKey]
+
+
+//             //si existe y tienen el mismo valor
+//             if (aKeyValue === bKeyValue) {
+
+//             } else {
+//                 //si existe pero no tienen el mismo valor
+//                 if (aKeyValue < bKeyValue) {
+
+//                 } else {
+//                     countDel += Math.abs(aKeyValue - bKeyValue);
+//                     aDic[aKey] = bDic[bKey];
+//                 }
+
+//             }
+
+//         } else {
+//             //si no existe
+//             delete aDic[aKey];
+//             countDel += aKeyValue;
+
+//         }
+
+//     }
+
+//     console.log(aDic);
+
+//     for (var p = 0; p < bDicKeys.length; p++) {
+//         var bKey = bDicKeys[p];
+//         var bKeyValue = bDic[bKey];
+
+//         if (aDic.hasOwnProperty(bKey)) {
+
+//             var aKey = bKey;
+//             var aKeyValue = aDic[aKey]
+
+//             if (aKeyValue === bKeyValue) {
+
+//             } else {
+//                 countDel += Math.abs(aKeyValue - bKeyValue);
+
+//             }
+
+//         } else {
+//             delete bDic[bKey];
+//             countDel += bKeyValue;
 
 //         }
 
@@ -485,6 +442,112 @@ console.log(makeAnagram("fcrxzwscanmligyxyvym", "jxwtrhvujlmrpdoqbisbwhmgpmeoke"
 // }
 
 // //console.log(makeAnagram("cde", "abc"));
-// console.log(makeAnagram("aaaa", "abc"));
-// //console.log(makeAnagram("fcrxzwscanmligyxyvym", "jxwtrhvujlmrpdoqbisbwhmgpmeoke"));
+// console.log(makeAnagram("fcrxzwscanmligyxyvym", "jxwtrhvujlmrpdoqbisbwhmgpmeoke"));
+//console.log(makeAnagram("famor", "amorrr"));
 
+//(14)  - 06 de abril de 2019 
+
+//VER RECURSIVIDAD VS ITERACION
+
+// function superReducedString(s) {
+
+//     if (s === "") {
+//         return "Empty String";
+//     }
+    
+
+//     var newString = "";
+//     var i = 0;
+
+//     while (i < s.length) {
+//         if (s[i] === s[i + 1]) {
+//             i += 2;
+//         } else {
+//             newString = newString.concat(s[i]);
+//             i++;
+//         }
+//     }
+
+//     if(s === newString) {
+//         return s;
+//     } else {
+//         return superReducedString(newString);
+//     }
+
+// }
+// console.log(superReducedString("aaabccddd"));
+// console.log(superReducedString("aa"));
+// console.log(superReducedString("baab"));
+
+
+// function holaRecursivo(i) {
+//     console.log(i);
+//     i++;
+//      if(i<10){
+//          hola(i);
+//      } else {
+
+//      }
+// }
+
+// function holaIterativo(i) {    
+//     while (i<10) {
+//         console.log(i);
+//         i++;
+//     }
+// }
+
+// function superReducedString(s) {
+
+//     var actual = s; //baab
+//     var next = s;
+//     do  {
+//         actual = next;
+//         if (actual === "") {
+//             return "Empty String";
+//         }
+
+//         var newString = "";
+//         var i = 0;
+
+//         while (i < actual.length) {
+//             if (actual[i] === actual[i + 1]) {
+//                 i += 2;
+//             } else {
+//                 newString = newString.concat(actual[i]);
+//                 i++;
+//             }
+//         }
+//         next = newString;
+//     } while (actual != next)
+
+//     return newString;
+// }
+// console.log(superReducedString("aaabccddd"));
+// console.log(superReducedString("aa"));
+// console.log(superReducedString("baab"));
+
+//COMBINACION - CARTAS
+var  array = [2, 1, 1, 0];
+
+//var  array = [3,3,6,1,3,9,4,2,13,5,5,1,3,11,2,1,0];
+array = array.sort();
+var combinaciones = 1; // lo inicialice en 1 porque al ser una multiplicacion si le ponia cero, siempre iba a dar cero.
+
+// para cada pick
+for ( var i = 0; i < array.length; i++) {
+    var count = 0;
+
+    for ( var j = 0 + i; j < array.length; j++ ) {
+    
+        if (array[j] <= i) {
+            console.log("array[j] vale: ", array[j], "<=", i);
+          count += 1;
+        }
+
+    }
+
+    combinaciones *= count;
+}
+
+console.log(combinaciones);
