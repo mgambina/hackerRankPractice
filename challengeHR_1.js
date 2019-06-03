@@ -66,7 +66,12 @@ function countPalindromes(s) {
     var initialStringLength = initialString.length;
     var fila = [];
 
-    //para crear todas las comnbinaciones posibles
+    //The substr() method extracts parts of a string, beginning at the character at the specified position, 
+    //and returns the specified number of characters.
+    //The substr() method does not change the original string.
+
+
+    //para crear todas las combinaciones posibles
     for (var i = 0; i < initialStringLength; i++) {
         for (var j = 0; j < initialStringLength - i; j++) {
             fila.push(initialString.substr(j, i + 1))
