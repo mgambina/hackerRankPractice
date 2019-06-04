@@ -12,58 +12,58 @@
 //y el segundo es la posicion en el thread
 
 function getEmailThreads(emails) {
-    let bodies = [];
-    let threads = {};
+
+    let arrayObjetos = [];
 
     for (let i = 0; i < emails.length; i++) {
 
-    
+        let objeto = {
+            personas: [],
+            body: "",
+            thread: 1,
+        }
+
         let parts = emails[i].split(",");
 
-        for (let j = 0; j < parts.length; j++) {
-            if (parts[j].includes("@")){
-                if(threads.hasOwnProperty(parts[j])) {
-                    threads[parts[j]] += 1;
-                } else {
-                    threads[parts[j]] = 1;
-                }
+        objeto.personas = [parts[0].trim(), parts[1].trim()];
 
-            } else {
-                bodies.push(parts[j])
+
+        for (let j = 2; j < parts.length; j++) {
+            objeto.body = objeto.body.concat(parts[j].trim());
+
+        }
+
+        let nuevoThread = true;
+
+        for (let k = 0; k < arrayObjetos.length; k++) {
+            let objetoComparacion = arrayObjetos[k];
+            if (objetoComparacion.personas[0] === objeto.personas[0] && objetoComparacion.personas[1] === objeto.personas[1] ||
+                objetoComparacion.personas[1] === objeto.personas[0] && objetoComparacion.personas[0] === objeto.personas[1]) {
+
+                if (objeto.body.includes(objetoComparacion.body)) {
+
+                    objetoComparacion.thread += 1;
+                    nuevoThread = false;
+                   
+                }
             }
         }
 
+        if (nuevoThread === true) {
+            arrayObjetos.push(objeto);
+            console.log((i + 1) + " "+ 1);
+        }
+
+
     }
 
-    return threads;
-    //return bodies;
+    return arrayObjetos;
+
 }
 
-console.log(getEmailThreads(['abc@gmail.com, x@gmail.com, hello x, how are you?',
+getEmailThreads(['abc@gmail.com, x@gmail.com, hello x, how are you?',
     'c@gmail.com, abc@gmail.com, did you take a look at the event?',
-    'x@gmail.com, abc@gmail.com, i am great. how are you?---hello x, how are you?']));
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    'x@gmail.com, abc@gmail.com, i am great. how are you?---hello x, how are you?']);
 
 
 //Minimum Sum
