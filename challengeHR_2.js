@@ -13,48 +13,65 @@
 
 function getEmailThreads(emails) {
 
+    //creo una array de objetos donde voy a guardar los resultados
     let arrayObjetos = [];
 
+    //itero sobre la array de emails para deteminar las partes (sender/receiver/body)
     for (let i = 0; i < emails.length; i++) {
 
+        //objeto modelo
         let objeto = {
             personas: [],
             body: "",
             thread: 1,
         }
 
+        //dividir las partes de cada envio
         let parts = emails[i].split(",");
 
+        //personas = sender y receiver y con el trim le elimino los espacios vacios
         objeto.personas = [parts[0].trim(), parts[1].trim()];
 
-
+        //como adentro del body tambien hay , tengo que concatenar los mensajes y eliminar los espacios
         for (let j = 2; j < parts.length; j++) {
             objeto.body = objeto.body.concat(parts[j].trim());
 
         }
 
+        //por default asumo que es un nuevo thread
         let nuevoThread = true;
 
+        //console.log("arrayObjetos contiene",arrayObjetos)
+        //console.log("Objeto en esta vuelta contiene", objeto);
+
         for (let k = 0; k < arrayObjetos.length; k++) {
+            //objetoComparacion --> es el objeto que creo
+            //objeto es el que estoy creando en cada vuelta de i
             let objetoComparacion = arrayObjetos[k];
             if (objetoComparacion.personas[0] === objeto.personas[0] && objetoComparacion.personas[1] === objeto.personas[1] ||
                 objetoComparacion.personas[1] === objeto.personas[0] && objetoComparacion.personas[0] === objeto.personas[1]) {
-
+                
+                //si tiene las mismas personas y ademas contiene parte del body, entonces no es un nuevo thread -> false
                 if (objeto.body.includes(objetoComparacion.body)) {
 
+                    //le sumo uno para ir contando cuantas replies tuvo ese thread
                     objetoComparacion.thread += 1;
                     nuevoThread = false;
+                    //como imprimo de que posicion viene?
+                    console.log("algo" + " " + objetoComparacion.thread);
                    
                 }
             }
         }
 
+        //si es un nuevo thread, lo agrego a la arrayObjetos
         if (nuevoThread === true) {
             arrayObjetos.push(objeto);
+            //como i empieza en cero, tengo que sumar 1
             console.log((i + 1) + " "+ 1);
-        }
+        } 
 
-
+    
     }
 
     return arrayObjetos;
