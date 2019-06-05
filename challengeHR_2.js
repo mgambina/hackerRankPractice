@@ -9,10 +9,9 @@
 //n es la cantidad de emails
 // es una array de emails
 //tiene que devolver una array bidimensional [(1,1),(2,1),(1,2)] donde el primer numero (integer) es el email thread id,
-//y el segundo es la posicion en el thread
+//y el segundo es la cantidad de emails en el thread
 
 function getEmailThreads(emails) {
-    //let id = 1;
 
     //creo una array de objetos donde voy a guardar los resultados
     let arrayObjetos = [];
@@ -25,7 +24,6 @@ function getEmailThreads(emails) {
             personas: [],
             body: "",
             thread: 1,
-            //id: id,
         }
 
         //dividir las partes de cada envio
@@ -42,11 +40,9 @@ function getEmailThreads(emails) {
 
         //por default asumo que es un nuevo thread
         let nuevoThread = true;
-
-        //console.log("arrayObjetos contiene",arrayObjetos)
-        //console.log("Objeto en esta vuelta contiene", objeto);
-
+       
         for (let k = 0; k < arrayObjetos.length; k++) {
+            
             //objetoComparacion --> es el objeto que uso como base para ver si es un nuevo thread
             //objeto es el que estoy creando en cada vuelta de i
             let objetoComparacion = arrayObjetos[k];
@@ -59,10 +55,9 @@ function getEmailThreads(emails) {
                     //le sumo uno para ir contando cuantas replies tuvo ese thread
                     objetoComparacion.thread += 1;
                     nuevoThread = false;
-                    //objetoComparacion.id = k + 1;
-                    //como imprimo de que posicion viene?
-                    //console.log(objetoComparacion.id, objetoComparacion.thread);
+            
                     console.log(("algo" + " " + objetoComparacion.thread));
+                    //arrayResultado.push(["algo",objetoComparacion.thread]);
                    
                 }
             }
@@ -72,20 +67,15 @@ function getEmailThreads(emails) {
         //si es un nuevo thread, lo agrego a la arrayObjetos
         if (nuevoThread === true) {
             arrayObjetos.push(objeto);
-            //objeto.id = 
             //como i empieza en cero, tengo que sumar 1
-            //console.log(id," ", 1);
             console.log((i + 1) + " " + 1);
         } 
 
     }
     
-    // for(let m = 0; m < arrayObjetos.length; m++) {
-    //     console.log(arrayObjetos[m].id, arrayObjetos[m].thread );
-    // }
     
     return arrayObjetos;
-
+    //return arrayResultado;
 }
 
 getEmailThreads(['abc@gmail.com, x@gmail.com, hello x, how are you?',
