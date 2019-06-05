@@ -12,6 +12,7 @@
 //y el segundo es la posicion en el thread
 
 function getEmailThreads(emails) {
+    //let id = 1;
 
     //creo una array de objetos donde voy a guardar los resultados
     let arrayObjetos = [];
@@ -24,6 +25,7 @@ function getEmailThreads(emails) {
             personas: [],
             body: "",
             thread: 1,
+            id: 0,
         }
 
         //dividir las partes de cada envio
@@ -57,23 +59,31 @@ function getEmailThreads(emails) {
                     //le sumo uno para ir contando cuantas replies tuvo ese thread
                     objetoComparacion.thread += 1;
                     nuevoThread = false;
+                    objetoComparacion.id = k + 1;
                     //como imprimo de que posicion viene?
-                    console.log("algo" + " " + objetoComparacion.thread);
+                    console.log(objetoComparacion.id, objetoComparacion.thread);
                    
                 }
             }
+
+
         }
 
         //si es un nuevo thread, lo agrego a la arrayObjetos
         if (nuevoThread === true) {
             arrayObjetos.push(objeto);
+            //objeto.id = 
             //como i empieza en cero, tengo que sumar 1
-            console.log((i + 1) + " "+ 1);
+            //console.log(id," ", 1);
         } 
 
     
     }
-
+    
+    // for(let m = 0; m < arrayObjetos.length; m++) {
+    //     console.log(arrayObjetos[m].id, arrayObjetos[m].thread );
+    // }
+    
     return arrayObjetos;
 
 }
