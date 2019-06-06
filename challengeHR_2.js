@@ -12,7 +12,7 @@
 //y el segundo es la cantidad de emails en el thread
 
 function getEmailThreads(emails) {
-
+    let arrayResultado = [];
     //creo una array de objetos donde voy a guardar los resultados
     let arrayObjetos = [];
 
@@ -23,7 +23,7 @@ function getEmailThreads(emails) {
         let objeto = {
             personas: [],
             body: "",
-            thread: 1,
+            cantMensajes: 1,
         }
 
         //dividir las partes de cada envio
@@ -40,47 +40,54 @@ function getEmailThreads(emails) {
 
         //por default asumo que es un nuevo thread
         let nuevoThread = true;
-       
+
         for (let k = 0; k < arrayObjetos.length; k++) {
-            
+
             //objetoComparacion --> es el objeto que uso como base para ver si es un nuevo thread
             //objeto es el que estoy creando en cada vuelta de i
             let objetoComparacion = arrayObjetos[k];
             if (objetoComparacion.personas[0] === objeto.personas[0] && objetoComparacion.personas[1] === objeto.personas[1] ||
                 objetoComparacion.personas[1] === objeto.personas[0] && objetoComparacion.personas[0] === objeto.personas[1]) {
-                
+
                 //si tiene las mismas personas y ademas contiene parte del body, entonces no es un nuevo thread -> false
                 if (objeto.body.includes(objetoComparacion.body)) {
 
+
                     //le sumo uno para ir contando cuantas replies tuvo ese thread
-                    objetoComparacion.thread += 1;
+                    objetoComparacion.cantMensajes += 1;
+                    objetoComparacion.body = objeto.body;
+
                     nuevoThread = false;
-            
-                    console.log(("algo" + " " + objetoComparacion.thread));
-                    //arrayResultado.push(["algo",objetoComparacion.thread]);
-                   
+
+                    arrayResultado.push([k + 1, objetoComparacion.cantMensajes]);
+
                 }
             }
 
         }
 
+        //console.log(arrayObjetos);
+        //console.log("____________________");
+
         //si es un nuevo thread, lo agrego a la arrayObjetos
         if (nuevoThread === true) {
             arrayObjetos.push(objeto);
-            //como i empieza en cero, tengo que sumar 1
-            console.log((i + 1) + " " + 1);
-        } 
+
+            arrayResultado.push([arrayObjetos.length, 1]);
+        }
 
     }
-    
-    
-    return arrayObjetos;
-    //return arrayResultado;
+
+    return arrayResultado;
 }
 
-getEmailThreads(['abc@gmail.com, x@gmail.com, hello x, how are you?',
+console.log(getEmailThreads(['abc@gmail.com, x@gmail.com, hello x, how are you?',
     'c@gmail.com, abc@gmail.com, did you take a look at the event?',
-    'x@gmail.com, abc@gmail.com, i am great. how are you?---hello x, how are you?']);
+    'x@gmail.com, abc@gmail.com, i am great. how are you?---hello x, how are you?',
+    'abc@gmail.com, x@gmail.com, hey que onda la vida---i am great. how are you?---hello x, how are you?',
+    'x@gmail.com, abc@gmail.com, this is not the same thread hello x, how are you?']));
+
+///    'abc@gmail.com, x@gmail.com, hey que onda la vida---i am great. how are you?---hello x, how are you?']));
 
 
 //Minimum Sum
