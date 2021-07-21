@@ -1,0 +1,22 @@
+{
+  "name": "hackerrankpractice",
+  "version": "1.0.0",
+  "description": "## Interviews preparing challenges (Jun 2019) - challengeHR_1.js - challengeHR_2.js - practicaChallengeHR_2.js - test.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mgambina/hackerRankPractice.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mgambina/hackerRankPractice/issues"
+  },
+  "homepage": "https://github.com/mgambina/hackerRankPractice#readme",
+  "dependencies": {
+    "nodemon": "^2.0.12"
+  }
+}
