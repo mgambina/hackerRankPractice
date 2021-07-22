@@ -1,4 +1,5 @@
 function equalStacks(h1, h2, h3) {
+  
   const stacksArrays = [];
 
   // armo el array de stacks
@@ -6,19 +7,16 @@ function equalStacks(h1, h2, h3) {
 
   let sumArraysTotal = createNewArrayOfArraySum(stacksArrays);
 
-  // console.log('valor de las sumas iniciales', sumArraysTotal);
-
   while (!areStacksEqual(sumArraysTotal)) {
     // encuentro el indice de la suma mas alta
     const arrayMaxIndex = findMaxInArrayIndex(sumArraysTotal);
 
     // remuevo el primer elemento de la mas alta
-    stacksArrays[arrayMaxIndex].shift();
-    // console.log('Stacks actualizados', stacksArrays);
+    const removedElement = stacksArrays[arrayMaxIndex].shift();
 
-    // actualizar el array de las sumas
-    sumArraysTotal = createNewArrayOfArraySum(stacksArrays);
-    // console.log('valor de las sumas actualizadas', sumArraysTotal);
+    // // actualizar el array de las sumas
+    sumArraysTotal[arrayMaxIndex] -= removedElement
+
   }
 
   return sumArraysTotal[0];
@@ -48,4 +46,4 @@ function areStacksEqual(stackArray) {
 
 // console.log(equalStacks([3, 2, 1, 1, 1], [4, 3, 2], [4, 3, 2]));
 // console.log(equalStacks([1, 2, 1, 1], [1, 1, 2], [1, 1]));
-console.log(equalStacks([1, 1], [1, 1], [1, 1]));
+// console.log(equalStacks([1, 1], [1, 1], [1, 1]));
